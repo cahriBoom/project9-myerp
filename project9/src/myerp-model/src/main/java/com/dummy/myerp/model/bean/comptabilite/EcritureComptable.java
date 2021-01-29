@@ -26,10 +26,11 @@ public class EcritureComptable {
     private JournalComptable journal;
     /** The Reference. */
     /* Exemple = CD-2021/00001 */
-    @Pattern(regexp = "\\d{1,5}-\\d{4}/\\d{5}")
+    @Pattern(regexp = "\\d{1,2}-\\d{4}/\\d{5}")
     private String reference;
     /** The Date. */
-    @NotNull private Date date;
+    @NotNull 
+    private Date date;
 
     /** The Libelle. */
     @NotNull
@@ -101,8 +102,8 @@ public class EcritureComptable {
     public BigDecimal getTotalCredit() {
         BigDecimal vRetour = BigDecimal.ZERO;
         for (LigneEcritureComptable vLigneEcritureComptable : listLigneEcriture) {
-            if (vLigneEcritureComptable.getDebit() != null) {
-                vRetour = vRetour.add(vLigneEcritureComptable.getDebit());
+            if (vLigneEcritureComptable.getCredit() != null) {
+                vRetour = vRetour.add(vLigneEcritureComptable.getCredit());
             }
         }
         return vRetour;
@@ -113,8 +114,12 @@ public class EcritureComptable {
      * @return boolean
      */
     public boolean isEquilibree() {
-        boolean vRetour = this.getTotalDebit().equals(getTotalCredit());
-        return vRetour;
+    	int value = this.getTotalDebit().compareTo(getTotalCredit());
+    	boolean vRetour = false;
+    	if (value==0) {
+    		vRetour = true;
+    	}    	
+    	return vRetour;
     }
 
     // ==================== Méthodes ====================
