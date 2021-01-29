@@ -8,7 +8,7 @@ public class FunctionalException extends Exception {
     /** serialVersionUID */
     private static final long serialVersionUID = 1L;
 
-
+    
     // ==================== Constructeurs ====================
     /**
      * Constructeur.
