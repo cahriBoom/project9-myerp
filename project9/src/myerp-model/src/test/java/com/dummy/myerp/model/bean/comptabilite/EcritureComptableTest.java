@@ -24,7 +24,7 @@ public class EcritureComptableTest {
     
     
     @Test
-    public void getTotalDebit() {
+    public void getTotal() {
     	//Arrange
     	EcritureComptable vEcriture = new EcritureComptable();
     	vEcriture.getListLigneEcriture().add(this.createLigne(1, "200.50", null));

@@ -21,89 +21,85 @@ import com.dummy.myerp.model.bean.comptabilite.LigneEcritureComptable;
 import com.dummy.myerp.technical.exception.FunctionalException;
 import com.dummy.myerp.technical.exception.NotFoundException;
 
-
 /**
  * Comptabilite manager implementation.
  */
 public class ComptabiliteManagerImpl extends AbstractBusinessManager implements ComptabiliteManager {
 
-    // ==================== Attributs ====================
-		
+	// ==================== Attributs ====================
+
 	@Inject
 	private ComptabiliteDao comptabiliteDao;
-	
-    // ==================== Constructeurs ====================
-    /**
-     * Instantiates a new Comptabilite manager.
-     */
-    public ComptabiliteManagerImpl() {
-    }
 
+	// ==================== Constructeurs ====================
+	/**
+	 * Instantiates a new Comptabilite manager.
+	 */
+	public ComptabiliteManagerImpl() {
+	}
 
-    // ==================== Getters/Setters ====================
-    @Override
-    public List<CompteComptable> getListCompteComptable() {
-        return getDaoProxy().getComptabiliteDao().getListCompteComptable();
-    }
+	// ==================== Getters/Setters ====================
+	@Override
+	public List<CompteComptable> getListCompteComptable() {
+		return getDaoProxy().getComptabiliteDao().getListCompteComptable();
+	}
 
+	@Override
+	public List<JournalComptable> getListJournalComptable() {
+		return getDaoProxy().getComptabiliteDao().getListJournalComptable();
+	}
 
-    @Override
-    public List<JournalComptable> getListJournalComptable() {
-        return getDaoProxy().getComptabiliteDao().getListJournalComptable();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<EcritureComptable> getListEcritureComptable() {
+		return getDaoProxy().getComptabiliteDao().getListEcritureComptable();
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<EcritureComptable> getListEcritureComptable() {
-        return getDaoProxy().getComptabiliteDao().getListEcritureComptable();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @SuppressWarnings("deprecation")
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("deprecation")
 	// TODO à tester
-    @Override
-    public synchronized void addReference(EcritureComptable pEcritureComptable) {
-    	//Getting the last value of the reference
-    	String new_reference = pEcritureComptable.getReference();
-    	String sep= "/";
-    	String derniereChaine[] = new_reference.split(sep);
-    	int pEcritureDateYear = pEcritureComptable.getDate().getYear();
-    	int derniereVal = Integer.parseInt(derniereChaine[1]);
-    	
-    	// Search for the same year as pEcritureComptable
-    	List<EcritureComptable> ecritures = comptabiliteDao.getListEcritureComptable();
-    	for(EcritureComptable c:ecritures) {
-    		int cDateYear = c.getDate().getYear();
-    		if(pEcritureDateYear==cDateYear) {
-    			derniereVal = derniereVal+1;
-    			String chaine = derniereChaine[0] + derniereVal;
-    			pEcritureComptable.setReference(chaine);
-    			comptabiliteDao.insertEcritureComptable(pEcritureComptable);
-    		}else {
-    			derniereVal = 00001;
-    			String chaine = derniereChaine[0] + derniereVal;
-    			pEcritureComptable.setReference(chaine);
-    			comptabiliteDao.insertEcritureComptable(pEcritureComptable);
-    		}
-    	}
-    }
+	@Override
+	public synchronized void addReference(EcritureComptable pEcritureComptable) {
+		// Getting the last value of the reference
+		String new_reference = pEcritureComptable.getReference();
+		String sep = "/";
+		String derniereChaine[] = new_reference.split(sep);
+		int pEcritureDateYear = pEcritureComptable.getDate().getYear();
+		int derniereVal = Integer.parseInt(derniereChaine[1]);
 
-    /**
-     * {@inheritDoc}
-     */
-    // TODO à tester
-    @Override
-    public void checkEcritureComptable(EcritureComptable pEcritureComptable) throws FunctionalException {
-        this.checkEcritureComptableUnit(pEcritureComptable);
-        this.checkEcritureComptableContext(pEcritureComptable);
-    }
+		// Search for the same year as pEcritureComptable
+		List<EcritureComptable> ecritures = comptabiliteDao.getListEcritureComptable();
+		for (EcritureComptable c : ecritures) {
+			int cDateYear = c.getDate().getYear();
+			if (pEcritureDateYear == cDateYear) {
+				derniereVal = derniereVal + 1;
+				String chaine = derniereChaine[0] + derniereVal;
+				pEcritureComptable.setReference(chaine);
+				comptabiliteDao.insertEcritureComptable(pEcritureComptable);
+			} else {
+				derniereVal = 00001;
+				String chaine = derniereChaine[0] + derniereVal;
+				pEcritureComptable.setReference(chaine);
+				comptabiliteDao.insertEcritureComptable(pEcritureComptable);
+			}
+		}
+	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	// TODO à tester
+	@Override
+	public void checkEcritureComptable(EcritureComptable pEcritureComptable) throws FunctionalException {
+		this.checkEcritureComptableUnit(pEcritureComptable);
+		this.checkEcritureComptableContext(pEcritureComptable);
+	}
 
-    /**
+	/**
      * Vérifie que l'Ecriture comptable respecte les règles de gestion unitaires,
      * c'est à dire indépendemment du contexte (unicité de la référence, exercie comptable non cloturé...)
      *
@@ -157,85 +153,89 @@ public class ComptabiliteManagerImpl extends AbstractBusinessManager implements 
         String list_1[] = reference.split(sep_1);
     	String firstPart = list_1[0];
         String list_2[] = firstPart.split(sep_2);
+        
+        
+        
+        
         int year = Integer.parseInt(list_2[1]);
         if(pEcritureComptable.getJournal().getSequence().getAnnee()!=year) {
-        	throw new FunctionalException("");
+        	throw new FunctionalException("L'écriture comptable doit respecter le formatage de la référence : XX-AAAA/#####");
         }
     }
 
+	/**
+	 * Vérifie que l'Ecriture comptable respecte les règles de gestion liées au
+	 * contexte (unicité de la référence, année comptable non cloturé...)
+	 *
+	 * @param pEcritureComptable -
+	 * @throws FunctionalException Si l'Ecriture comptable ne respecte pas les
+	 *                             règles de gestion
+	 */
+	protected void checkEcritureComptableContext(EcritureComptable pEcritureComptable) throws FunctionalException {
+		// ===== RG_Compta_6 : La référence d'une écriture comptable doit être unique
+		if (StringUtils.isNoneEmpty(pEcritureComptable.getReference())) {
+			try {
+				// Recherche d'une écriture ayant la même référence
+				EcritureComptable vECRef = getDaoProxy().getComptabiliteDao()
+						.getEcritureComptableByRef(pEcritureComptable.getReference());
 
-    /**
-     * Vérifie que l'Ecriture comptable respecte les règles de gestion liées au contexte
-     * (unicité de la référence, année comptable non cloturé...)
-     *
-     * @param pEcritureComptable -
-     * @throws FunctionalException Si l'Ecriture comptable ne respecte pas les règles de gestion
-     */
-    protected void checkEcritureComptableContext(EcritureComptable pEcritureComptable) throws FunctionalException {
-        // ===== RG_Compta_6 : La référence d'une écriture comptable doit être unique
-        if (StringUtils.isNoneEmpty(pEcritureComptable.getReference())) {
-            try {
-                // Recherche d'une écriture ayant la même référence
-                EcritureComptable vECRef = getDaoProxy().getComptabiliteDao().getEcritureComptableByRef(
-                    pEcritureComptable.getReference());
+				// Si l'écriture à vérifier est une nouvelle écriture (id == null),
+				// ou si elle ne correspond pas à l'écriture trouvée (id != idECRef),
+				// c'est qu'il y a déjà une autre écriture avec la même référence
+				if (pEcritureComptable.getId() == null || !pEcritureComptable.getId().equals(vECRef.getId())) {
+					throw new FunctionalException("Une autre écriture comptable existe déjà avec la même référence.");
+				}
+			} catch (NotFoundException vEx) {
+				// Dans ce cas, c'est bon, ça veut dire qu'on n'a aucune autre écriture avec la
+				// même référence.
+			}
+		}
+	}
 
-                // Si l'écriture à vérifier est une nouvelle écriture (id == null),
-                // ou si elle ne correspond pas à l'écriture trouvée (id != idECRef),
-                // c'est qu'il y a déjà une autre écriture avec la même référence
-                if (pEcritureComptable.getId() == null
-                    || !pEcritureComptable.getId().equals(vECRef.getId())) {
-                    throw new FunctionalException("Une autre écriture comptable existe déjà avec la même référence.");
-                }
-            } catch (NotFoundException vEx) {
-                // Dans ce cas, c'est bon, ça veut dire qu'on n'a aucune autre écriture avec la même référence.
-            }
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void insertEcritureComptable(EcritureComptable pEcritureComptable) throws FunctionalException {
+		this.checkEcritureComptable(pEcritureComptable);
+		TransactionStatus vTS = getTransactionManager().beginTransactionMyERP();
+		try {
+			getDaoProxy().getComptabiliteDao().insertEcritureComptable(pEcritureComptable);
+			getTransactionManager().commitMyERP(vTS);
+			vTS = null;
+		} finally {
+			getTransactionManager().rollbackMyERP(vTS);
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void insertEcritureComptable(EcritureComptable pEcritureComptable) throws FunctionalException {
-        this.checkEcritureComptable(pEcritureComptable);
-        TransactionStatus vTS = getTransactionManager().beginTransactionMyERP();
-        try {
-            getDaoProxy().getComptabiliteDao().insertEcritureComptable(pEcritureComptable);
-            getTransactionManager().commitMyERP(vTS);
-            vTS = null;
-        } finally {
-            getTransactionManager().rollbackMyERP(vTS);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void updateEcritureComptable(EcritureComptable pEcritureComptable) throws FunctionalException {
+		this.checkEcritureComptable(pEcritureComptable);
+		TransactionStatus vTS = getTransactionManager().beginTransactionMyERP();
+		try {
+			getDaoProxy().getComptabiliteDao().updateEcritureComptable(pEcritureComptable);
+			getTransactionManager().commitMyERP(vTS);
+			vTS = null;
+		} finally {
+			getTransactionManager().rollbackMyERP(vTS);
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void updateEcritureComptable(EcritureComptable pEcritureComptable) throws FunctionalException {
-    	this.checkEcritureComptable(pEcritureComptable);
-    	TransactionStatus vTS = getTransactionManager().beginTransactionMyERP();
-        try {
-            getDaoProxy().getComptabiliteDao().updateEcritureComptable(pEcritureComptable);
-            getTransactionManager().commitMyERP(vTS);
-            vTS = null;
-        } finally {
-            getTransactionManager().rollbackMyERP(vTS);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void deleteEcritureComptable(Integer pId) {
-        TransactionStatus vTS = getTransactionManager().beginTransactionMyERP();
-        try {
-            getDaoProxy().getComptabiliteDao().deleteEcritureComptable(pId);
-            getTransactionManager().commitMyERP(vTS);
-            vTS = null;
-        } finally {
-            getTransactionManager().rollbackMyERP(vTS);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void deleteEcritureComptable(Integer pId) {
+		TransactionStatus vTS = getTransactionManager().beginTransactionMyERP();
+		try {
+			getDaoProxy().getComptabiliteDao().deleteEcritureComptable(pId);
+			getTransactionManager().commitMyERP(vTS);
+			vTS = null;
+		} finally {
+			getTransactionManager().rollbackMyERP(vTS);
+		}
+	}
 }
