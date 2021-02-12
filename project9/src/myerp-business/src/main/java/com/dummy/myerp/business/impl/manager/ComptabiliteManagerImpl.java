@@ -154,12 +154,9 @@ public class ComptabiliteManagerImpl extends AbstractBusinessManager implements 
     	String firstPart = list_1[0];
         String list_2[] = firstPart.split(sep_2);
         
-        
-        
-        
         int year = Integer.parseInt(list_2[1]);
         if(pEcritureComptable.getJournal().getSequence().getAnnee()!=year) {
-        	throw new FunctionalException("L'écriture comptable doit respecter le formatage de la référence : XX-AAAA/#####");
+        	throw new FunctionalException("L'écriture comptable doit respecter le formatage de la référence, Année éronnée");
         }
     }
 

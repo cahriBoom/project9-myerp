@@ -74,7 +74,7 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
         List<JournalComptable> vList = vJdbcTemplate.query(SQLgetListJournalComptable, vRM);
         return vList;
     }
-
+    
     // ==================== EcritureComptable - GET ====================
 
     /** SQLgetListEcritureComptable */
