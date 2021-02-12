@@ -22,9 +22,8 @@ public class EcritureComptableTest {
         return vRetour;
     }
     
-    
     @Test
-    public void getTotal() {
+    public void getTotalDebitTest() {
     	//Arrange
     	EcritureComptable vEcriture = new EcritureComptable();
     	vEcriture.getListLigneEcriture().add(this.createLigne(1, "200.50", null));
@@ -34,11 +33,26 @@ public class EcritureComptableTest {
     	
     	//Act
     	BigDecimal debit = vEcriture.getTotalDebit();
+    	
+    	//Assert
+    	assertEquals(BigDecimal.valueOf(341), debit);
+    	
+    }
+    
+    @Test
+    public void getTotalCreditTest() {
+    	//Arrange
+    	EcritureComptable vEcriture = new EcritureComptable();
+    	vEcriture.getListLigneEcriture().add(this.createLigne(1, "200.50", null));
+        vEcriture.getListLigneEcriture().add(this.createLigne(1, "100.50", "33"));
+        vEcriture.getListLigneEcriture().add(this.createLigne(2, null, "301"));
+        vEcriture.getListLigneEcriture().add(this.createLigne(2, "40", "7"));     	
+    	
+    	//Act
     	BigDecimal credit = vEcriture.getTotalCredit();
     	
     	//Assert
-    	assertEquals(341, debit);
-    	assertEquals(341, credit);
+    	assertEquals(BigDecimal.valueOf(341), credit);
     	
     	
     }
