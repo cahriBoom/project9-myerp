@@ -6,14 +6,6 @@ services:
 addons:
   sonarcloud:
     organization: "cahriboom"
-before_script:
-  - cd ./docker/dev/
-  - docker-compose up -d
-  - cd ../../src
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonal:sonal -Dsonar.projectKey=cahriBoom_project9-myerp
-after_script:
-  - cd ../docker/dev
-  - docker-compose stop
-  - docker-compose rm -f
