@@ -7,7 +7,7 @@ addons:
   sonarcloud:
     organization: "cahriboom"
 before_script:
-  - cd ./docker/dev/
+  - cd project9/docker/dev/
   - docker-compose up -d
   - cd ../../src
 script:
