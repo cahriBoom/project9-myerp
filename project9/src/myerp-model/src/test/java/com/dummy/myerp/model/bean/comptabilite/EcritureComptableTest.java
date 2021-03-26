@@ -3,6 +3,7 @@ package com.dummy.myerp.model.bean.comptabilite;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,17 +29,17 @@ public class EcritureComptableTest {
     public void getTotalDebitTest() {
     	//Arrange
     	EcritureComptable vEcriture = new EcritureComptable();
-    	vEcriture.getListLigneEcriture().add(this.createLigne(1, "200.50", null));
-        vEcriture.getListLigneEcriture().add(this.createLigne(1, "100.50", "33"));
+    	vEcriture.getListLigneEcriture().add(this.createLigne(1, "200.5", null));
+        vEcriture.getListLigneEcriture().add(this.createLigne(1, "100.5", "33"));
         vEcriture.getListLigneEcriture().add(this.createLigne(2, null, "301"));
         vEcriture.getListLigneEcriture().add(this.createLigne(2, "40", "7"));     	
     	
     	//Act
     	BigDecimal debit = vEcriture.getTotalDebit();
-    	
+
     	//Assert
-    	assertEquals(BigDecimal.valueOf(341), debit);
-    	
+        assertEquals(BigDecimal.valueOf(341.0), debit);
+
     }
     
     @Test
@@ -52,7 +53,7 @@ public class EcritureComptableTest {
     	
     	//Act
     	BigDecimal credit = vEcriture.getTotalCredit();
-    	
+
     	//Assert
     	assertEquals(BigDecimal.valueOf(341), credit);
     	
