@@ -9,5 +9,5 @@
     <!-- ========== Get cunsumer context ========== -->
     <import resource="classpath:/com/dummy/myerp/consumer/applicationContext.xml"/>
     <!-- ========== Override databases config ========== -->
-    <import resource="databaseContext.xml"/>
+    <import resource="databaseContextIT.xml"/>
 </beans>
