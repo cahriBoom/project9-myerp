@@ -12,7 +12,9 @@ before_script:
   - cd ../../src
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn -f pom.xml
+  - mvn plugin-prefix:goal
+  - mvn plugin-group-id:plugin-artifact-id[:plugin-version]:goal
+  - mvn test
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cahriBoom_project9-myerp
 after_script:
   - cd ../docker/dev
