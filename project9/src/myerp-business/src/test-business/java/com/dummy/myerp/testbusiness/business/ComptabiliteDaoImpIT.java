@@ -100,7 +100,8 @@ public class ComptabiliteDaoImpIT {
 	public void updateEcritureComptableTest() throws FunctionalException {
 		// Arrange
 		List<EcritureComptable> liste_ecriture = manager.getListEcritureComptable();
-		EcritureComptable cEcritureComptable = liste_ecriture.get(5);
+		int size = liste_ecriture.size();
+		EcritureComptable cEcritureComptable = liste_ecriture.get(size-1);
 		JournalComptable journal = cEcritureComptable.getJournal();
 		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021, 1);
 		journal.setSequence(sequence);
