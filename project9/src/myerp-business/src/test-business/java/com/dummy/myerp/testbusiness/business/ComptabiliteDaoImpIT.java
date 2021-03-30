@@ -121,7 +121,8 @@ public class ComptabiliteDaoImpIT {
 	public void deleteEcritureComptableTest() throws FunctionalException {
 		// Arrange
 		List<EcritureComptable> liste_ecriture = manager.getListEcritureComptable();
-		EcritureComptable cEcritureComptable = liste_ecriture.get(5);
+		int size = liste_ecriture.size();
+		EcritureComptable cEcritureComptable = liste_ecriture.get(size-1);
 
 		List<EcritureComptable> comptes_before = comptabiliteDao.getListEcritureComptable();
 		int size_before = comptes_before.size();
