@@ -111,7 +111,7 @@ public class ComptabiliteDaoImpIT {
 		// Act
 		manager.updateEcritureComptable(cEcritureComptable);
 		List<EcritureComptable> updated_liste_ecriture = manager.getListEcritureComptable();
-		EcritureComptable updatedEcriture = updated_liste_ecriture.get(5);
+		EcritureComptable updatedEcriture = updated_liste_ecriture.get(size-1);
 
 
 		// Assert
