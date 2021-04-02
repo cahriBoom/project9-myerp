@@ -12,10 +12,7 @@ before_script:
   - cd ../../src
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - Dsonar.host.url=https://sonarcloud.io/
-  - Dsonar.projectKey=cahriBoom_project9-myerp
-  - Dsonar.login=p8W591YxV1JxE1kvSdCHrA
+  - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cahriBoom_project9-myerp -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=p8W591YxV1JxE1kvSdCHrA
   
 after_script:
   - cd ../docker/dev
