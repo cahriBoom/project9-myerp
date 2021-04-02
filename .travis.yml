@@ -11,7 +11,6 @@ before_script:
   - docker-compose up -d
   - cd ../../src
 script:
-  #LOL
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
   -Dsonar.host.url=https://sonarcloud.io/
