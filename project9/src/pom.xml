@@ -54,10 +54,6 @@
         <log4j.version>2.8.1</log4j.version>
         <spring.version>4.3.17.RELEASE</spring.version>
         
-        <!-- ===== Sonar Properties ===== -->
-        <sonar.projectKey>cahriBoom_project9-myerp</sonar.projectKey>
-        <sonar.organization>cahriboom</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     
 
