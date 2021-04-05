@@ -7,7 +7,7 @@ addons:
   sonarcloud:
     organization: "cahriboom"
     token:
-      secure: "**************************" # encrypted value of your token
+       secure: "v0F6uoI+vmF2VxXEwJOZS13mq7pRxVQjj59KMliI8MPvuSOrw23zknxyGgDYhdyHIFx6fr39dAGSl7BCBMPX45SnP26R49e9kkxP6LyXuJ058Jgdz++kUzeNp2FUYgRUzrMDfGrJ0ZbAJ/lILuYXlu0IBQgqUrcmDiQu9/HTbKd13IRwIRPEovA8bOG7KNDwvwMPxNzgiMVGTfMeilLnJpBy3C3f6X//Vq5khmvTYzzSu7BZN+Blwo3STMVuunNsR65SLzCdqQH1KCXO7MBjT83wO9X4sTqFTcXVL5gt/zC0DsIN9AXp8+hmCtqjaTcTCzXeLK5p4jmwu4JeUvmnxSUu5DBOwZzknqRkYHMBPSyt7t3xmNTnWAzWlD88Ju/fZF5C/d/qTDcF73tcTpOlobQlqKdINT46feBODSIfyE9iVD37yj0OZ6xGa8TjnHFHpk33jptdhoD8NBxHm7/VSZFCJWDIpUbwlPOxisSF4wI4G4N0Q09LjETY3q1NhZL67/wpbi6TPy5QiR7+bpUENKrbvMNiqkUmkmZ8fnozm8oggla4a1FnAEjzOXuTx2MGR/p6mcvpfLAoerRL6Y1MhJp8DThzZ6RsAmxEcAXkNN3gImYFux0zIqxp3bWnZynAJoxvlrSwfVv3xPRK5eDLADEo7GNk2Y9FVpD7uFZ/aXQ="
     
 before_install:
   - cd project9/docker/dev/
