@@ -1,6 +1,7 @@
 language: java
 jdk:
   - openjdk11
+sudo: false
 services:
   - docker
 addons:
@@ -12,7 +13,7 @@ before_script:
   - cd ../../src
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cahriBoom_project9-myerp -Dsonar.login=p8W591YxV1JxE1kvSdCHrA
+  - mvn --file ./src/pom.xml clean jacoco:prepare-agent package jacoco:report coveralls:report -P test-consumer,test-business
   
 after_script:
   - cd ../docker/dev
