@@ -8,6 +8,7 @@ addons:
     organization: "cahriboom"
     token: ${SONAR_TOKEN}
 before_script:
+  - travis encrypt
   - cd project9/docker/dev/
   - docker-compose up -d
   - cd ../../src
