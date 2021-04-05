@@ -6,14 +6,13 @@ services:
 addons:
   sonarcloud:
     organization: "cahriboom"
-    token: ${SONAR_TOKEN}
 before_script:
   - cd project9/docker/dev/
   - docker-compose up -d
   - cd ../../src
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cahriBoom_project9-myerp
+  - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cahriBoom_project9-myerp -Dsonar.login=${SONAR_TOKEN}
   
 after_script:
   - cd ../docker/dev
