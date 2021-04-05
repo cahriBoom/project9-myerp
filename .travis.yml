@@ -10,7 +10,7 @@ addons:
 before_script:
    - docker-compose -f project9/docker/dev/docker-compose.yml up -d
 script:
-  - mvn --file ./src/pom.xml clean jacoco:prepare-agent package jacoco:report coveralls:report -P test-consumer,test-business
+  - mvn --file ./project9/src/pom.xml clean jacoco:prepare-agent package jacoco:report coveralls:report -P test-consumer,test-business
 after_script:
   - mvn clean test jacoco:report coveralls:report
   - docker-compose -f project9/docker/dev/docker-compose.yml stop
