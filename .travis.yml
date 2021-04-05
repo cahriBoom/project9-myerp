@@ -6,6 +6,7 @@ services:
 addons:
   sonarcloud:
     organization: "cahriboom"
+    token: ${SONAR_TOKEN}
 before_script:
   - cd project9/docker/dev/
   - docker-compose up -d
