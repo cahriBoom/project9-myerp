@@ -6,8 +6,6 @@ services:
 addons:
   sonarcloud:
     organization: "cahriboom"
-    token:
-      secure: "nRsXAPedqp307+G9lttpLFGfoPgmgl84n+L89Ma7w5JodJwiWz0RohCWUiIfPpRuhrsBdqgsj7VKS0t7Quvn7lH0TaRplb7QZ2rQGtodbjTT75833oSECfBNckrTlq+GpHe6O7iGV90C414tqKgzBAwQt7r5oeDYRRHy7nToCLvBZS+YwGYpdZRJo+EcKiZdYzETFOh92gZ6RlktCI9T6psdkaOa+E6kqsr7ahwSF9IWRD8gjdg0i5WNNw4MU+8Q7xxtGWpjONZS8cZ+w1RsIZwykAL4di/XRPWdiYHT2TqXcys8Ga9PwJTvjud7PAfoO/dSUikLeOztGiz5l+XP0lfbDOynd+OhzMxCWKYbaw9xBSjg3JtM97CADZFRtSleiTVp81V1ZyAnyvmOXicWHI9vN35/2MRQzf78ro8t9YL4/TAznzipfbUyYgla4HQn7JDT6w/MArXsx1gcD8sKZf22cqqMOLQYki8mzh8hoQIK27Z2sCFduI6wFLbORw9RifMLycDQuOI5tTvoXYlX1+7zsmalMx+YB1zOZ+O39ugopPRsIubUzForwOyb5SSd34MwTKwQ9ZOTlQjLAaD+OYzbhMYVIJcs1SgJ8V/uOh/PLRKC83SkN8/Y92xOjrM5rHTB73vW47VMjBDaBYbttrYTblSETZkcxpg7qncms3I="
 
 before_install:
   - cd project9/docker/dev/
