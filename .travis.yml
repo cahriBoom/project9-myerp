@@ -7,8 +7,8 @@ addons:
   sonarcloud:
     organization: "cahriboom"
     token:
-       secure: "v0F6uoI+vmF2VxXEwJOZS13mq7pRxVQjj59KMliI8MPvuSOrw23zknxyGgDYhdyHIFx6fr39dAGSl7BCBMPX45SnP26R49e9kkxP6LyXuJ058Jgdz++kUzeNp2FUYgRUzrMDfGrJ0ZbAJ/lILuYXlu0IBQgqUrcmDiQu9/HTbKd13IRwIRPEovA8bOG7KNDwvwMPxNzgiMVGTfMeilLnJpBy3C3f6X//Vq5khmvTYzzSu7BZN+Blwo3STMVuunNsR65SLzCdqQH1KCXO7MBjT83wO9X4sTqFTcXVL5gt/zC0DsIN9AXp8+hmCtqjaTcTCzXeLK5p4jmwu4JeUvmnxSUu5DBOwZzknqRkYHMBPSyt7t3xmNTnWAzWlD88Ju/fZF5C/d/qTDcF73tcTpOlobQlqKdINT46feBODSIfyE9iVD37yj0OZ6xGa8TjnHFHpk33jptdhoD8NBxHm7/VSZFCJWDIpUbwlPOxisSF4wI4G4N0Q09LjETY3q1NhZL67/wpbi6TPy5QiR7+bpUENKrbvMNiqkUmkmZ8fnozm8oggla4a1FnAEjzOXuTx2MGR/p6mcvpfLAoerRL6Y1MhJp8DThzZ6RsAmxEcAXkNN3gImYFux0zIqxp3bWnZynAJoxvlrSwfVv3xPRK5eDLADEo7GNk2Y9FVpD7uFZ/aXQ="
-    
+      secure: "nRsXAPedqp307+G9lttpLFGfoPgmgl84n+L89Ma7w5JodJwiWz0RohCWUiIfPpRuhrsBdqgsj7VKS0t7Quvn7lH0TaRplb7QZ2rQGtodbjTT75833oSECfBNckrTlq+GpHe6O7iGV90C414tqKgzBAwQt7r5oeDYRRHy7nToCLvBZS+YwGYpdZRJo+EcKiZdYzETFOh92gZ6RlktCI9T6psdkaOa+E6kqsr7ahwSF9IWRD8gjdg0i5WNNw4MU+8Q7xxtGWpjONZS8cZ+w1RsIZwykAL4di/XRPWdiYHT2TqXcys8Ga9PwJTvjud7PAfoO/dSUikLeOztGiz5l+XP0lfbDOynd+OhzMxCWKYbaw9xBSjg3JtM97CADZFRtSleiTVp81V1ZyAnyvmOXicWHI9vN35/2MRQzf78ro8t9YL4/TAznzipfbUyYgla4HQn7JDT6w/MArXsx1gcD8sKZf22cqqMOLQYki8mzh8hoQIK27Z2sCFduI6wFLbORw9RifMLycDQuOI5tTvoXYlX1+7zsmalMx+YB1zOZ+O39ugopPRsIubUzForwOyb5SSd34MwTKwQ9ZOTlQjLAaD+OYzbhMYVIJcs1SgJ8V/uOh/PLRKC83SkN8/Y92xOjrM5rHTB73vW47VMjBDaBYbttrYTblSETZkcxpg7qncms3I="
+
 before_install:
   - cd project9/docker/dev/
   - docker-compose up -d
@@ -16,6 +16,7 @@ before_install:
 before_script:
   - cd ../../src
 script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cahriBoom_project9-myerp
 
 after_script:
