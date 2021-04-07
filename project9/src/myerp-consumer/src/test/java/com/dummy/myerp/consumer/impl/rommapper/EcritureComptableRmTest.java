@@ -61,6 +61,7 @@ public class EcritureComptableRmTest {
 
         //Act
         EcritureComptable ecritureComptable = ecritureComptableRM.mapRow(resultSet, 1);
+        ecritureComptable.setJournal(journalComptable);
 
         //Assert
         assertEquals("Test Ecriture Comptable Mapping Id", Integer.valueOf(123), ecritureComptable.getId());

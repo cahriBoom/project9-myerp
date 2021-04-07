@@ -60,6 +60,7 @@ public class LigneEcritureComptableRMTest {
         when(daoProxy.getComptabiliteDao()).thenReturn(comptabiliteDao);
         //Act
         LigneEcritureComptable ligneEcritureComptable = ligneEcritureComptableRM.mapRow(resultSet, 1);
+        ligneEcritureComptable.setCompteComptable(compteComptable);
 
         //Assert
         assertEquals("Test Ligne Ecriture Comptable Mapping compte", compteComptable, ligneEcritureComptable.getCompteComptable());
