@@ -109,10 +109,10 @@ public class EcritureComptableTest {
     	SequenceEcritureComptable sec = new SequenceEcritureComptable("",2021, 8);
     	
     	//Act
-    	sec.setJournalCode("AC");
+    	sec.setCodeJournal("AC");
         sec.setAnnee(2022);
     	sec.setDerniereValeur(1);
-    	String code = sec.getJournalCode();
+    	String code = sec.getCodeJournal();
     	int annee = sec.getAnnee();
     	int last = sec.getDerniereValeur();
     	String toString = sec.toString();

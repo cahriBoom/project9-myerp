@@ -8,7 +8,7 @@ public class SequenceEcritureComptable {
 
     // ==================== Attributs ====================
     /** code du journal */
-    private String journalCode;
+    private String codeJournal;
     /** L'année */
     private Integer annee;
     /** La dernière valeur utilisée */
@@ -23,20 +23,20 @@ public class SequenceEcritureComptable {
 
     /**
      * Constructeur
-     * @param pJournalCode - Code du journal
+     * @param pCodeJournal - Code du journal
      * @param pAnnee - Année de la séquence
      * @param pDerniereValeur - derniere valeur de la séquence
      */
-    public SequenceEcritureComptable(String pJournalCode, Integer pAnnee, Integer pDerniereValeur) {
-        journalCode = pJournalCode;
+    public SequenceEcritureComptable(String pCodeJournal, Integer pAnnee, Integer pDerniereValeur) {
+        codeJournal = pCodeJournal;
         annee = pAnnee;
         derniereValeur = pDerniereValeur;
     }
 
 
     // ==================== Getters/Setters ====================
-    public String getJournalCode() { return journalCode; }
-    public void setJournalCode(String pJournalCode) { journalCode = pJournalCode; }
+    public String getCodeJournal() { return codeJournal; }
+    public void setCodeJournal(String pCodeJournal) { codeJournal = pCodeJournal; }
     public Integer getAnnee() { return annee; }
     public void setAnnee(Integer pAnnee) {
         annee = pAnnee;
