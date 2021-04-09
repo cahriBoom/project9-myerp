@@ -1,9 +1,8 @@
 package com.dummy.myerp.business.impl.manager;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 import com.dummy.myerp.model.bean.comptabilite.*;
 import org.junit.Test;
