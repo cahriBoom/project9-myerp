@@ -264,15 +264,13 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
     /**
      * Renvoie la dernière valeur de la séquence pour un journal et une année donnée
      *
-     * @param pCodeJournal code du Journal
      * @param pAnnee       année de la séquence
      * @return Dernière valeur
      */
     @Override
-    public Integer getDernierNumeroSequenceComptableByJournalAndAnnee(String pCodeJournal, Integer pAnnee) {
+    public Integer getDernierNumeroSequenceComptableByAnnee(Integer pAnnee) {
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource(DataSourcesEnum.MYERP));
         MapSqlParameterSource vSqlParams = new MapSqlParameterSource();
-        vSqlParams.addValue(journalCode, pCodeJournal);
         vSqlParams.addValue(annee, pAnnee);
         SequenceEcritureComptableRM vRM = new SequenceEcritureComptableRM();
         List<SequenceEcritureComptable> vSequenceList = vJdbcTemplate.query(reqSQLselectDerniereValeurSequenceJournalComptable, vSqlParams, vRM);

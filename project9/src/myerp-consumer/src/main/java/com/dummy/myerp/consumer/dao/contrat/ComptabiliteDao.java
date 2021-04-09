@@ -84,11 +84,10 @@ public interface ComptabiliteDao {
     /**
      * Renvoie la dernière valeur de la séquence pour un journal et une année donnés
      *
-     * @param pCodeJournal code du Journal
      * @param pAnnee       année de la séquence
      * @return la dernière valeur de la séquence
      */
-    Integer getDernierNumeroSequenceComptableByJournalAndAnnee(String pCodeJournal, Integer pAnnee);
+    Integer getDernierNumeroSequenceComptableByAnnee(Integer pAnnee);
 
     /**
      * Insert une nouvelle séquence pour un journal et une année donnés

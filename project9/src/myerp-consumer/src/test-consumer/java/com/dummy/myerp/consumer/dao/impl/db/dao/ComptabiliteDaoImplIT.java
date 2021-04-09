@@ -200,7 +200,7 @@ public class ComptabiliteDaoImplIT {
         Integer annee = 2000;
 
         //Act
-        Integer derniere_valeur = comptabiliteDaoImpl.getDernierNumeroSequenceComptableByJournalAndAnnee(journalCode,annee);
+        Integer derniere_valeur = comptabiliteDaoImpl.getDernierNumeroSequenceComptableByAnnee(annee);
 
         //Assert
         assertEquals("TI consumer sequence ecriture get dernire valeur pour un journal existant", Integer.valueOf(40),derniere_valeur);
@@ -214,7 +214,7 @@ public class ComptabiliteDaoImplIT {
         Integer annee = 2000;
 
         //Act
-        Integer derniere_valeur = comptabiliteDaoImpl.getDernierNumeroSequenceComptableByJournalAndAnnee(journalCode, annee);
+        Integer derniere_valeur = comptabiliteDaoImpl.getDernierNumeroSequenceComptableByAnnee(annee);
 
         //Assert
         assertNull("TI consumer sequence ecriture get dernire valeur null pour un journal inexistant", derniere_valeur);
@@ -228,14 +228,14 @@ public class ComptabiliteDaoImplIT {
         //Arrange
         String journalCode = "OD";
         Integer annee = 2000;
-        assertNull(comptabiliteDaoImpl.getDernierNumeroSequenceComptableByJournalAndAnnee(journalCode, annee));
+        assertNull(comptabiliteDaoImpl.getDernierNumeroSequenceComptableByAnnee(annee));
         SequenceEcritureComptable sequenceEcritureComptable = new SequenceEcritureComptable(annee, 1);
 
         //Act
         comptabiliteDaoImpl.insertSequenceEcritureComptable(sequenceEcritureComptable);
 
         //Assert
-        assertEquals("TI consumer sequence ecriture insert sequence journal", Integer.valueOf(1), comptabiliteDaoImpl.getDernierNumeroSequenceComptableByJournalAndAnnee(journalCode, annee));
+        assertEquals("TI consumer sequence ecriture insert sequence journal", Integer.valueOf(1), comptabiliteDaoImpl.getDernierNumeroSequenceComptableByAnnee(annee));
 
     }
 
@@ -246,14 +246,14 @@ public class ComptabiliteDaoImplIT {
         //Arrange
         String journalCode = "OD";
         Integer annee = 2000;
-        assertNotEquals(Integer.valueOf(15), comptabiliteDaoImpl.getDernierNumeroSequenceComptableByJournalAndAnnee(journalCode, annee));
+        assertNotEquals(Integer.valueOf(15), comptabiliteDaoImpl.getDernierNumeroSequenceComptableByAnnee(annee));
         SequenceEcritureComptable sequenceEcritureComptable = new SequenceEcritureComptable(annee, 15);
 
         //Act
         comptabiliteDaoImpl.updateSequenceEcritureComptable(sequenceEcritureComptable);
 
         //Assert
-        assertEquals("TI consumer sequence ecriture update sequence journal",Integer.valueOf(15) , comptabiliteDaoImpl.getDernierNumeroSequenceComptableByJournalAndAnnee(journalCode, annee));
+        assertEquals("TI consumer sequence ecriture update sequence journal",Integer.valueOf(15) , comptabiliteDaoImpl.getDernierNumeroSequenceComptableByAnnee(annee));
 
     }
 }

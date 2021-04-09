@@ -91,16 +91,16 @@
         </property>
         <property name="reqSQLselectDerniereValeurSequenceJournalComptable">
             <value>
-                SELECT * FROM myerp.sequence_ecriture_comptable
-                WHERE journal_code = :journal_code AND annee = :annee
+                SELECT myerp.sequence_ecriture_comptable.derniere_valeur FROM myerp.sequence_ecriture_comptable
+                WHERE  annee = :annee
             </value>
         </property>
         <property name="reqSQLinsertSequenceJournalComptable">
             <value>
                 INSERT INTO myerp.sequence_ecriture_comptable (
-                journal_code, annee, derniere_valeur
+                annee, derniere_valeur
                 ) VALUES (
-                :journal_code, :annee, :sequence)
+                :annee, :sequence)
             </value>
         </property>
         <property name="reqSQLupdateSequenceJournalComptable">
@@ -108,7 +108,7 @@
                 UPDATE myerp.sequence_ecriture_comptable SET
                 derniere_valeur = :sequence
                 WHERE
-                journal_code = :journal_code AND annee = :annee
+                annee = :annee
             </value>
         </property>
     </bean>
