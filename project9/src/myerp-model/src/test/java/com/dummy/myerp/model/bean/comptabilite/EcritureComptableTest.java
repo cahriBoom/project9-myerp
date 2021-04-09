@@ -106,16 +106,19 @@ public class EcritureComptableTest {
     @Test
     public void testSequenceEcritureComptable() {
     	//Arrange
-    	SequenceEcritureComptable sec = new SequenceEcritureComptable(2021, 8);
+    	SequenceEcritureComptable sec = new SequenceEcritureComptable("",2021, 8);
     	
     	//Act
-    	sec.setAnnee(2022);
+    	sec.setJournalCode("AC");
+        sec.setAnnee(2022);
     	sec.setDerniereValeur(1);
+    	String code = sec.getJournalCode();
     	int annee = sec.getAnnee();
     	int last = sec.getDerniereValeur();
     	String toString = sec.toString();
     	
     	//Assert
+        Assert.assertEquals("AC", code);
     	Assert.assertEquals(2022, annee);
     	Assert.assertEquals(1, last);
     }

@@ -58,11 +58,9 @@ public class JournalComptable {
     public void setLibelle(String pLibelle) {
         libelle = pLibelle;
     }
-
     public SequenceEcritureComptable getSequence() {
 		return sequence;
 	}
-
 	public void setSequence(SequenceEcritureComptable sequence) {
 		this.sequence = sequence;
 	}
