@@ -18,8 +18,5 @@
 
     <!-- ========== Transaction Managers ========== -->
     <import resource="transactionContext.xml"/>
-
-    <!-- ========== Transaction Managers ========== -->
-    <import resource="daoContext.xml"/>
     
 </beans>
