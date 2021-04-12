@@ -17,7 +17,7 @@ public class ComptabiliteManagerImplTest {
 	public void checkEcritureComptableUnit() throws Exception {
 		//Arrange
 		EcritureComptable vEcritureComptable = new EcritureComptable();
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021,1);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("AC",2021,1);
 		JournalComptable journal = new JournalComptable("AC", "Achat");
 		journal.setSequence(sequence);
 		vEcritureComptable.setJournal(journal);
@@ -46,7 +46,7 @@ public class ComptabiliteManagerImplTest {
 	public void checkEcritureComptableUnitRG2Violation() throws Exception {
 		//Arrange
 		EcritureComptable vEcritureComptable = new EcritureComptable();
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021,1);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("AC",2021,1);
 		JournalComptable journal = new JournalComptable("AC", "Achat");
 		journal.setSequence(sequence);
 		vEcritureComptable.setJournal(journal);
@@ -71,7 +71,7 @@ public class ComptabiliteManagerImplTest {
 
 		//Arrange
 		EcritureComptable vEcritureComptable = new EcritureComptable();
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021,1);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("AC", 2021,1);
 		JournalComptable journal = new JournalComptable("AC", "Achat");
 		journal.setSequence(sequence);
 		vEcritureComptable.setJournal(journal);
@@ -95,7 +95,7 @@ public class ComptabiliteManagerImplTest {
 	public void checkEcritureComptableRG5Violation() throws Exception {
 		//Arrange
 		EcritureComptable vEcritureComptable = new EcritureComptable();
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2022,1);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("XX", 2022,1);
 		JournalComptable journal = new JournalComptable("XX", "Achat");
 		journal.setSequence(sequence);
 		vEcritureComptable.setJournal(journal);
@@ -118,7 +118,7 @@ public class ComptabiliteManagerImplTest {
 	public void checkEcritureComptable() throws Exception {
 		//Arrange
 		EcritureComptable vEcritureComptable = new EcritureComptable();
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021,1);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("Ac",2021,1);
 		JournalComptable journal = new JournalComptable("AC", "Achat");
 		journal.setSequence(sequence);
 		vEcritureComptable.setJournal(journal);
