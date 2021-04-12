@@ -73,7 +73,7 @@ public class ComptabiliteDaoImpIT {
 		cEcritureComptable.setLibelle("Test Libelle");
 		cEcritureComptable.setReference("TS-2021/00001");
 		JournalComptable journal = new JournalComptable("AC", "Achat");
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021,10);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("AC",2021,10);
 		journal.setSequence(sequence);
 		cEcritureComptable.setJournal(journal);
 
@@ -103,7 +103,7 @@ public class ComptabiliteDaoImpIT {
 		int size = liste_ecriture.size();
 		EcritureComptable cEcritureComptable = liste_ecriture.get(size-1);
 		JournalComptable journal = cEcritureComptable.getJournal();
-		SequenceEcritureComptable sequence = new SequenceEcritureComptable(2021, 1);
+		SequenceEcritureComptable sequence = new SequenceEcritureComptable("AC", 2021, 1);
 		journal.setSequence(sequence);
 		cEcritureComptable.setJournal(journal);
 		cEcritureComptable.setLibelle("Changement");
