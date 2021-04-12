@@ -19,7 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.dummy.myerp.business.contrat.manager.ComptabiliteManager;
 import com.dummy.myerp.business.impl.BusinessProxyImpl;
 import com.dummy.myerp.consumer.dao.contrat.ComptabiliteDao;
-import com.dummy.myerp.consumer.dao.contrat.DaoProxy;
 import com.dummy.myerp.technical.exception.FunctionalException;
 
 
@@ -31,13 +30,10 @@ public class ComptabiliteDaoImpIT {
 
 	@Inject
 	private ComptabiliteDao comptabiliteDao;
-	
+
 	@Inject
     private BusinessProxyImpl businessProxy;
-    
-    @Inject
-    private DaoProxy daoProxy;      
-    
+
 	@Before
 	public void setUp() {
 		manager = businessProxy.getComptabiliteManager();
