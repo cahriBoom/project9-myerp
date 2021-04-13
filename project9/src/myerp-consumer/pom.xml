@@ -223,7 +223,7 @@
                                 <rule>
                                     <limits>
                                         <limit>
-                                            <minimum>0.75</minimum>
+                                            <minimum>0.25</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
